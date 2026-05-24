@@ -102,10 +102,10 @@ svg {
 }
 
 .brand-mark img {
-  width: 138%;
-  height: 138%;
-  max-width: none;
-  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  object-fit: contain;
 }
 
 .brand-copy {
@@ -202,7 +202,7 @@ svg {
 .hero {
   position: relative;
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   min-height: 420px;
   height: 56vh;
   max-height: 560px;
@@ -225,11 +225,99 @@ svg {
   pointer-events: none;
 }
 
-.hero-content {
+.hero-inner {
   position: relative;
   z-index: 1;
-  width: min(860px, 100%);
+  display: grid;
+  grid-template-columns: minmax(240px, 310px) minmax(0, 820px);
+  gap: 54px;
+  align-items: center;
+  width: min(100% - 48px, 1600px);
   margin-inline: auto;
+}
+
+.hero-content {
+  width: min(820px, 100%);
+}
+
+.hero-signal {
+  --card-glow: var(--cyan);
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 250px;
+  padding: 22px;
+  background: rgba(18, 26, 38, 0.72);
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--orange);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(14px);
+}
+
+.hero-signal h2 {
+  margin-bottom: 12px;
+  font-size: 1.28rem;
+  line-height: 1.24;
+}
+
+.hero-signal p:not(.eyebrow) {
+  margin-bottom: 18px;
+  color: var(--muted);
+}
+
+.signal-actions {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.signal-actions a {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  color: #ffffff;
+  background: #1a2637;
+  border: 1px solid var(--line-strong);
+  border-radius: 8px;
+  text-decoration: none;
+}
+
+.signal-actions a:hover,
+.signal-actions a:focus-visible {
+  color: var(--orange);
+  outline: 0;
+  border-color: var(--orange);
+}
+
+.signal-actions svg {
+  width: 19px;
+  height: 19px;
+}
+
+.signal-actions img {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+}
+
+.signal-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.signal-stack span {
+  padding: 6px 8px;
+  color: #dff4ff;
+  background: rgba(17, 186, 242, 0.1);
+  border: 1px solid rgba(17, 186, 242, 0.28);
+  border-radius: 8px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.72rem;
+  font-weight: 800;
 }
 
 .eyebrow {
@@ -1095,11 +1183,6 @@ h1 {
   border-radius: 8px;
 }
 
-.contact-panel .contact-band {
-  width: auto;
-  margin: 0;
-}
-
 .contact-band h2 {
   margin-bottom: 8px;
   font-size: 1.8rem;
@@ -1111,6 +1194,7 @@ h1 {
 }
 
 .metric-card,
+.hero-signal,
 .analytics-panel,
 .about-panel,
 .focus-item,
@@ -1132,6 +1216,7 @@ h1 {
 }
 
 .metric-card::after,
+.hero-signal::after,
 .analytics-panel::after,
 .about-panel::after,
 .focus-item::after,
@@ -1156,6 +1241,7 @@ h1 {
 }
 
 .metric-card:hover,
+.hero-signal:hover,
 .analytics-panel:hover,
 .about-panel:hover,
 .focus-item:hover,
@@ -1189,6 +1275,7 @@ h1 {
 }
 
 .metric-card:hover::after,
+.hero-signal:hover::after,
 .analytics-panel:hover::after,
 .about-panel:hover::after,
 .focus-item:hover::after,
@@ -1322,6 +1409,15 @@ h1 {
     background-position: center, right bottom;
   }
 
+  .hero-inner {
+    grid-template-columns: 1fr;
+    width: min(100% - 40px, 760px);
+  }
+
+  .hero-signal {
+    display: none;
+  }
+
   h1 {
     font-size: 3rem;
   }
@@ -1385,6 +1481,10 @@ h1 {
     min-height: 400px;
     height: 52vh;
     padding: 34px 16px 34px;
+  }
+
+  .hero-inner {
+    width: 100%;
   }
 
   h1 {
