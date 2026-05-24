@@ -98,31 +98,38 @@
         style="--hero-image: url('https://lh3.googleusercontent.com/sitesv/AA5AbUB5NX3v8DMRXQ_fmH29smodgY2h4N3Pikg375JoqVWtu2cJaaqVLcg6WBn8ped73ixblSVCIodzqnMK2bpSDYMtj5DP0Qe7PP1VS0jBDJSXxSPkoNFKcLomG65VRYf0KqTuZOk5PUbMgtweD6jnO2hkKF2yLaX2XG-H6YVm-5cT8GgpWIs-7CTjLv6IbEMkCGL1bdVEdSREEFagIbDapZ01Z2ou78ZNlBdA4TQ=w1280'); --hero-fallback: url('https://avatars.githubusercontent.com/u/63961534?v=4')"
       >
         <div class="hero-inner">
-          <aside class="hero-signal" aria-label="Contact snapshot">
-            <p class="eyebrow"><span></span> Connect</p>
-            <h2>Analytics, AI, forecasting, and data products.</h2>
-            <p>Gurugram, India &middot; open to high-impact analytics and AI product conversations.</p>
-            <div class="signal-actions">
-              <a href="mailto:soumyadipta_das@consultant.com" aria-label="Email Soumyadipta Das"><i data-lucide="mail"></i></a>
-              <a href="https://www.linkedin.com/in/soumyadipta-das/" target="_blank" rel="noopener" aria-label="LinkedIn"><img src="https://www.google.com/s2/favicons?domain=linkedin.com&sz=64" alt="" /></a>
-              <a href="https://github.com/Soumyadipta2020" target="_blank" rel="noopener" aria-label="GitHub"><img src="https://www.google.com/s2/favicons?domain=github.com&sz=64" alt="" /></a>
-              <a href="https://connect.posit.cloud/Soumyadipta2020" target="_blank" rel="noopener" aria-label="Posit Cloud"><img src="https://www.google.com/s2/favicons?domain=posit.co&sz=64" alt="" /></a>
-            </div>
-            <div class="signal-stack" aria-label="Core stack">
-              <span>PySpark</span>
-              <span>Databricks</span>
-              <span>Shiny</span>
-              <span>LLM Apps</span>
-            </div>
-          </aside>
-
           <div class="hero-content">
             <p class="eyebrow"><span></span> Analytics Portfolio</p>
             <h1>Soumyadipta Das</h1>
+            <p class="hero-subtitle">Analytics, AI, forecasting, and data products.</p>
             <p class="hero-lede">
               Analytics & AI Manager with over five years of hands-on experience across data science,
               statistics, R programming, Shiny apps, PySpark, Azure Databricks, and AI-enabled products.
             </p>
+            
+            <div class="hero-meta-row">
+              <div class="hero-location">
+                <i data-lucide="map-pin"></i>
+                <span>Gurugram, India &middot; open to high-impact conversations.</span>
+              </div>
+              <div class="signal-actions">
+                <a href="mailto:soumyadipta_das@consultant.com" aria-label="Email Soumyadipta Das"><i data-lucide="mail"></i></a>
+                <a href="https://www.linkedin.com/in/soumyadipta-das/" target="_blank" rel="noopener" aria-label="LinkedIn"><img src="https://www.google.com/s2/favicons?domain=linkedin.com&sz=64" alt="" /></a>
+                <a href="https://github.com/Soumyadipta2020" target="_blank" rel="noopener" aria-label="GitHub"><img src="https://www.google.com/s2/favicons?domain=github.com&sz=64" alt="" /></a>
+                <a href="https://connect.posit.cloud/Soumyadipta2020" target="_blank" rel="noopener" aria-label="Posit Cloud"><img src="https://www.google.com/s2/favicons?domain=posit.co&sz=64" alt="" /></a>
+              </div>
+            </div>
+
+            <div class="hero-stack-row">
+              <span class="stack-label">Core Stack:</span>
+              <div class="signal-stack" aria-label="Core stack">
+                <span>PySpark</span>
+                <span>Databricks</span>
+                <span>Shiny</span>
+                <span>LLM Apps</span>
+              </div>
+            </div>
+
             <div class="hero-actions">
               <a class="button button-primary" href="#projects" data-tab-target="projects">
                 <i data-lucide="line-chart"></i>
@@ -564,7 +571,8 @@
               <span>AI-integrated forecasting app for planning workflows, built around PyShiny and forecasting interactions.</span>
               <div class="project-meta">
                 <span>Python</span>
-                <span>2 stars</span>
+                <span>Shiny</span>
+                <span>Forecasting</span>
               </div>
               <a href="https://github.com/Soumyadipta2020/forecasting_tool_pyshiny" target="_blank" rel="noopener">Open repo <i data-lucide="external-link"></i></a>
             </article>
@@ -575,8 +583,8 @@
               <span>Forecasting app for time-series and non-time-series data, combining visualization, modeling, and AI support.</span>
               <div class="project-meta">
                 <span>R</span>
-                <span>7 stars</span>
-                <span>1 fork</span>
+                <span>Shiny</span>
+                <span>Time-Series</span>
               </div>
               <a href="https://github.com/Soumyadipta2020/forecasting_tool" target="_blank" rel="noopener">Open repo <i data-lucide="external-link"></i></a>
             </article>
@@ -587,41 +595,44 @@
               <span>R-based chatbot project exploring multimodal AI workflows with Shiny, JavaScript, and Hugging Face integration.</span>
               <div class="project-meta">
                 <span>R</span>
-                <span>2 stars</span>
-                <span>2 forks</span>
+                <span>Shiny</span>
+                <span>NLP</span>
               </div>
               <a href="https://github.com/Soumyadipta2020/Chatbot_with_R" target="_blank" rel="noopener">Open repo <i data-lucide="external-link"></i></a>
             </article>
             <article class="project-card">
-              <div class="project-icon red"><i data-lucide="files"></i></div>
-              <p>Python + PyShiny</p>
-              <h3>Bulk Upload Validation</h3>
-              <span>PyShiny application pattern for uploading multiple files and validating incoming data before downstream analytics.</span>
+              <div class="project-icon red"><i data-lucide="brain"></i></div>
+              <p>Python + LangChain</p>
+              <h3>AI Agent Beer Production</h3>
+              <span>Intelligent conversational AI agent built to discuss, query, and analyze monthly beer production data in Austria.</span>
               <div class="project-meta">
                 <span>Python</span>
-                <span>Shiny</span>
+                <span>AI Agent</span>
+                <span>LangChain</span>
               </div>
-              <a href="https://github.com/Soumyadipta2020/Bulk-Upload-Validation---PyShiny" target="_blank" rel="noopener">Open repo <i data-lucide="external-link"></i></a>
+              <a href="https://github.com/Soumyadipta2020/ai_agent_beer_production" target="_blank" rel="noopener">Open repo <i data-lucide="external-link"></i></a>
             </article>
             <article class="project-card">
-              <div class="project-icon violet"><i data-lucide="line-chart"></i></div>
-              <p>PySpark + ML</p>
-              <h3>Machine Learning in PySpark</h3>
-              <span>Notebook collection for machine-learning workflows in PySpark, aligned with distributed analytics and Databricks work.</span>
+              <div class="project-icon violet"><i data-lucide="sliders"></i></div>
+              <p>Python + Streamlit</p>
+              <h3>Airport Resource Management</h3>
+              <span>Interactive dashboard and resource planning application designed for airport operational planners.</span>
               <div class="project-meta">
-                <span>Notebook</span>
-                <span>PySpark</span>
+                <span>Python</span>
+                <span>Streamlit</span>
+                <span>Planning</span>
               </div>
-              <a href="https://github.com/Soumyadipta2020/ML-PySpark" target="_blank" rel="noopener">Open repo <i data-lucide="external-link"></i></a>
+              <a href="https://github.com/Soumyadipta2020/Airport-Resource-Management" target="_blank" rel="noopener">Open repo <i data-lucide="external-link"></i></a>
             </article>
             <article class="project-card">
               <div class="project-icon cyan"><i data-lucide="bar-chart-3"></i></div>
               <p>Streamlit + Dashboard</p>
               <h3>India Financial Growth</h3>
-              <span>Interactive dashboard for Indian financial growth with Python, pandas, visualization, and Streamlit delivery.</span>
+              <span>Interactive dashboard tracking India's financial growth indicators, built with Python, pandas, and Streamlit.</span>
               <div class="project-meta">
                 <span>Python</span>
-                <span>1 star</span>
+                <span>Streamlit</span>
+                <span>Analytics</span>
               </div>
               <a href="https://github.com/Soumyadipta2020/financial_growth_app" target="_blank" rel="noopener">Open repo <i data-lucide="external-link"></i></a>
             </article>
