@@ -970,6 +970,98 @@ h1 {
   font-weight: 800;
 }
 
+.credential-list {
+  display: grid;
+  gap: 14px;
+}
+
+.credential-item,
+.award-card {
+  display: grid;
+  grid-template-columns: 60px 1fr;
+  gap: 16px;
+  padding: 20px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+
+.credential-item {
+  border-left: 3px solid var(--violet);
+}
+
+.award-card {
+  border-left: 3px solid var(--orange);
+}
+
+.credential-logo {
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  overflow: hidden;
+  background: #eef3f8;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+
+.credential-logo img {
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+}
+
+.fallback-logo {
+  color: #1f2a3a;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.72rem;
+  font-weight: 800;
+}
+
+.exl-logo {
+  color: var(--orange);
+  background: #fff7f0;
+  font-weight: 800;
+}
+
+.credential-item span,
+.award-card span {
+  color: var(--cyan);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.82rem;
+  font-weight: 800;
+}
+
+.credential-item h3,
+.award-card h3 {
+  margin: 4px 0 6px;
+}
+
+.credential-item p,
+.award-card p {
+  color: var(--muted);
+  margin-bottom: 10px;
+}
+
+.credential-subtitle {
+  color: #ffffff;
+  font-weight: 800;
+}
+
+.credential-tags {
+  grid-column: auto;
+}
+
+.awards-head {
+  margin-top: 30px;
+}
+
+.awards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
 .contact-band {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
@@ -1038,6 +1130,12 @@ h1 {
 .social-links svg {
   width: 19px;
   height: 19px;
+}
+
+.social-links img {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
 }
 
 @media (max-width: 1240px) {
@@ -1115,6 +1213,7 @@ h1 {
   .project-grid,
   .writing-grid,
   .education-grid,
+  .awards-grid,
   .contact-band {
     grid-template-columns: 1fr;
   }
@@ -1127,6 +1226,11 @@ h1 {
   .role-details,
   .tag-list {
     grid-column: 1;
+  }
+
+  .credential-item,
+  .award-card {
+    grid-template-columns: 1fr;
   }
 }
 
