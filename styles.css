@@ -203,10 +203,8 @@ svg {
   position: relative;
   display: flex;
   align-items: center;
-  min-height: 390px;
-  height: 50vh;
-  max-height: 500px;
-  padding: 52px 16px 46px;
+  min-height: 560px;
+  padding: 80px 52px;
   border-bottom: 1px solid var(--line);
   background-image:
     linear-gradient(90deg, rgba(5, 8, 13, 0.96) 0%, rgba(5, 8, 13, 0.84) 52%, rgba(5, 8, 13, 0.38) 78%, rgba(5, 8, 13, 0.08) 100%),
