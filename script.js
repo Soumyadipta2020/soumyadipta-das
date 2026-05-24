@@ -3,6 +3,12 @@
   const tabButtons = Array.from(document.querySelectorAll("[data-tab]"));
   const tabPanels = Array.from(document.querySelectorAll("[data-panel]"));
   const tabLinks = Array.from(document.querySelectorAll("[data-tab-target]"));
+  const chartPoints = Array.from(document.querySelectorAll(".chart-point"));
+  const tooltip = document.createElement("div");
+
+  tooltip.className = "chart-tooltip";
+  tooltip.hidden = true;
+  document.body.appendChild(tooltip);
 
   function setMenuIcon(isOpen) {
     if (!navToggle) {
@@ -40,6 +46,24 @@
     });
   }
 
+  function scrollToWorkbench() {
+    const workbench = document.querySelector(".workbench");
+    if (workbench) {
+      workbench.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  }
+
+  function showTooltip(point, x, y) {
+    tooltip.innerHTML = `<strong>${point.dataset.series}</strong><span>${point.dataset.label}: ${point.dataset.value}%</span>`;
+    tooltip.hidden = false;
+    tooltip.style.left = `${x}px`;
+    tooltip.style.top = `${y}px`;
+  }
+
+  function hideTooltip() {
+    tooltip.hidden = true;
+  }
+
   if (navToggle) {
     navToggle.addEventListener("click", () => {
       const isOpen = !document.body.classList.contains("nav-open");
@@ -50,12 +74,11 @@
   }
 
   tabButtons.forEach((button) => {
-    button.addEventListener("click", () => {
+    button.addEventListener("click", (event) => {
+      event.preventDefault();
       activateTab(button.dataset.tab);
-      const workbench = document.querySelector(".workbench");
-      if (workbench) {
-        workbench.scrollIntoView({ behavior: "smooth", block: "start" });
-      }
+      closeMenu();
+      scrollToWorkbench();
     });
   });
 
@@ -64,12 +87,33 @@
       event.preventDefault();
       activateTab(link.dataset.tabTarget);
       closeMenu();
-      const workbench = document.querySelector(".workbench");
-      if (workbench) {
-        workbench.scrollIntoView({ behavior: "smooth", block: "start" });
-      }
+      scrollToWorkbench();
     });
   });
+
+  chartPoints.forEach((point) => {
+    point.addEventListener("mousemove", (event) => {
+      showTooltip(point, event.clientX, event.clientY);
+    });
+
+    point.addEventListener("mouseenter", (event) => {
+      showTooltip(point, event.clientX, event.clientY);
+    });
+
+    point.addEventListener("mouseleave", hideTooltip);
+
+    point.addEventListener("focus", () => {
+      const rect = point.getBoundingClientRect();
+      showTooltip(point, rect.left + rect.width / 2, rect.top);
+    });
+
+    point.addEventListener("blur", hideTooltip);
+  });
+
+  const initialTab = window.location.hash.replace("#", "");
+  if (initialTab && tabPanels.some((panel) => panel.dataset.panel === initialTab)) {
+    activateTab(initialTab);
+  }
 
   document.addEventListener("keydown", (event) => {
     if (event.key === "Escape") {
