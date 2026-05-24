@@ -93,18 +93,19 @@ svg {
 .brand-mark {
   display: grid;
   place-items: center;
-  width: 52px;
-  height: 52px;
+  width: 58px;
+  height: 58px;
+  overflow: hidden;
   border-radius: 8px;
-  background: var(--orange);
+  background: transparent;
   color: #ffffff;
-  box-shadow: 0 14px 34px rgba(255, 122, 26, 0.34);
 }
 
-.brand-mark svg {
-  width: 28px;
-  height: 28px;
-  stroke-width: 2.4;
+.brand-mark img {
+  width: 138%;
+  height: 138%;
+  max-width: none;
+  object-fit: cover;
 }
 
 .brand-copy {
@@ -363,6 +364,7 @@ h1 {
 
 .metric-card {
   --accent: var(--blue);
+  --card-glow: var(--accent);
   min-height: 146px;
   padding: 18px;
   background: var(--surface);
@@ -472,6 +474,7 @@ h1 {
 .analytics-panel,
 .about-panel,
 .writing-column {
+  --card-glow: var(--blue);
   min-width: 0;
   padding: 22px;
   background: var(--surface);
@@ -482,14 +485,17 @@ h1 {
 }
 
 .analytics-panel:nth-child(2) {
+  --card-glow: var(--teal);
   border-top-color: var(--teal);
 }
 
 .about-panel {
+  --card-glow: var(--teal);
   border-top-color: var(--teal);
 }
 
 .about-panel:nth-child(2) {
+  --card-glow: var(--blue);
   border-top-color: var(--blue);
 }
 
@@ -695,6 +701,7 @@ h1 {
 .timeline-item,
 .project-card,
 .education-card {
+  --card-glow: var(--orange);
   min-width: 0;
   padding: 20px;
   background: var(--surface);
@@ -729,6 +736,7 @@ h1 {
 }
 
 .experience-company {
+  --card-glow: var(--orange);
   display: flex;
   align-items: center;
   gap: 16px;
@@ -821,6 +829,7 @@ h1 {
 }
 
 .project-card {
+  --card-glow: var(--blue);
   display: flex;
   flex-direction: column;
   min-height: 285px;
@@ -828,22 +837,27 @@ h1 {
 }
 
 .project-card:nth-child(2) {
+  --card-glow: var(--teal);
   border-top-color: var(--teal);
 }
 
 .project-card:nth-child(3) {
+  --card-glow: var(--gold);
   border-top-color: var(--gold);
 }
 
 .project-card:nth-child(4) {
+  --card-glow: var(--red);
   border-top-color: var(--red);
 }
 
 .project-card:nth-child(5) {
+  --card-glow: var(--violet);
   border-top-color: var(--violet);
 }
 
 .project-card:nth-child(6) {
+  --card-glow: var(--cyan);
   border-top-color: var(--cyan);
 }
 
@@ -927,6 +941,7 @@ h1 {
 }
 
 .writing-column:nth-child(2) {
+  --card-glow: var(--teal);
   border-top-color: var(--teal);
 }
 
@@ -960,6 +975,7 @@ h1 {
 }
 
 .education-card {
+  --card-glow: var(--violet);
   border-top: 3px solid var(--violet);
 }
 
@@ -987,10 +1003,12 @@ h1 {
 }
 
 .credential-item {
+  --card-glow: var(--violet);
   border-left: 3px solid var(--violet);
 }
 
 .award-card {
+  --card-glow: var(--orange);
   border-left: 3px solid var(--orange);
 }
 
@@ -1063,6 +1081,7 @@ h1 {
 }
 
 .contact-band {
+  --card-glow: var(--orange);
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
   gap: 24px;
@@ -1089,6 +1108,107 @@ h1 {
 .contact-band p:last-child {
   margin-bottom: 0;
   color: var(--muted);
+}
+
+.metric-card,
+.analytics-panel,
+.about-panel,
+.focus-item,
+.timeline-item,
+.experience-company,
+.project-card,
+.writing-column,
+.education-card,
+.credential-item,
+.award-card,
+.contact-band {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  transition:
+    border-color 220ms ease,
+    box-shadow 220ms ease,
+    transform 220ms ease;
+}
+
+.metric-card::after,
+.analytics-panel::after,
+.about-panel::after,
+.focus-item::after,
+.timeline-item::after,
+.experience-company::after,
+.project-card::after,
+.writing-column::after,
+.education-card::after,
+.credential-item::after,
+.award-card::after,
+.contact-band::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  z-index: 0;
+  opacity: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 22% 10%, color-mix(in srgb, var(--card-glow, var(--cyan)) 34%, transparent), transparent 34%),
+    radial-gradient(circle at 82% 0%, color-mix(in srgb, var(--card-glow, var(--cyan)) 24%, transparent), transparent 28%);
+  transition: opacity 220ms ease;
+}
+
+.metric-card:hover,
+.analytics-panel:hover,
+.about-panel:hover,
+.focus-item:hover,
+.timeline-item:hover,
+.experience-company:hover,
+.project-card:hover,
+.writing-column:hover,
+.education-card:hover,
+.credential-item:hover,
+.award-card:hover,
+.contact-band:hover {
+  transform: translateY(-3px);
+  border-color: color-mix(in srgb, var(--card-glow, var(--cyan)) 72%, var(--line));
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--card-glow, var(--cyan)) 30%, transparent),
+    0 0 32px color-mix(in srgb, var(--card-glow, var(--cyan)) 32%, transparent),
+    0 24px 70px rgba(0, 0, 0, 0.45);
+}
+
+.project-card:focus-within,
+.writing-column:focus-within,
+.credential-item:focus-within,
+.award-card:focus-within,
+.contact-band:focus-within {
+  transform: translateY(-3px);
+  border-color: color-mix(in srgb, var(--card-glow, var(--cyan)) 72%, var(--line));
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--card-glow, var(--cyan)) 30%, transparent),
+    0 0 32px color-mix(in srgb, var(--card-glow, var(--cyan)) 32%, transparent),
+    0 24px 70px rgba(0, 0, 0, 0.45);
+}
+
+.metric-card:hover::after,
+.analytics-panel:hover::after,
+.about-panel:hover::after,
+.focus-item:hover::after,
+.timeline-item:hover::after,
+.experience-company:hover::after,
+.project-card:hover::after,
+.writing-column:hover::after,
+.education-card:hover::after,
+.credential-item:hover::after,
+.award-card:hover::after,
+.contact-band:hover::after {
+  opacity: 1;
+}
+
+.project-card:focus-within::after,
+.writing-column:focus-within::after,
+.credential-item:focus-within::after,
+.award-card:focus-within::after,
+.contact-band:focus-within::after {
+  opacity: 1;
 }
 
 .site-footer {
