@@ -428,21 +428,23 @@ h1 {
   box-shadow: 0 16px 36px rgba(0, 0, 0, 0.25);
 }
 
-.status-strip {
+.hero-status-strip {
   display: flex;
   align-items: center;
-  gap: 14px;
-  min-height: 48px;
-  padding: 0 16px;
-  background: #151e2c;
-  border-bottom: 1px solid var(--line);
+  flex-wrap: wrap;
+  gap: 8px 14px;
+  margin-top: 36px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-.status-strip strong {
+.hero-status-strip strong {
   color: var(--text);
+  font-weight: 800;
+  font-size: 0.95rem;
 }
 
-.status-strip span:last-child {
+.hero-status-strip span:last-child {
   color: var(--cyan);
   font-size: 0.92rem;
 }
@@ -1542,11 +1544,10 @@ h1 {
     font-size: 1rem;
   }
 
-  .status-strip {
+  .hero-status-strip {
     align-items: flex-start;
-    flex-wrap: wrap;
-    gap: 8px 12px;
-    padding: 12px 16px;
+    padding-top: 18px;
+    margin-top: 28px;
   }
 
   .metric-grid,
