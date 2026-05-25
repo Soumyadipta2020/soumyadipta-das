@@ -1450,10 +1450,16 @@ h1 {
   }
 
   .hero {
-    min-height: 410px;
-    height: 54vh;
-    padding: 42px 20px 40px;
-    background-position: center, right bottom;
+    align-items: flex-start;
+    min-height: 0;
+    height: auto;
+    padding: 48px 20px 44px;
+    background-image:
+      linear-gradient(180deg, rgba(5, 8, 13, 0.97) 0%, rgba(5, 8, 13, 0.9) 58%, rgba(5, 8, 13, 0.78) 100%),
+      var(--hero-image),
+      var(--hero-fallback);
+    background-size: cover, min(82vw, 420px) auto, min(68vw, 320px) auto;
+    background-position: center, center bottom, center bottom;
   }
 
   .hero-inner {
@@ -1527,9 +1533,11 @@ h1 {
   }
 
   .hero {
-    min-height: 400px;
-    height: 52vh;
-    padding: 34px 16px 34px;
+    min-height: 0;
+    height: auto;
+    padding: 30px 16px 32px;
+    background-size: cover, min(92vw, 360px) auto, min(72vw, 300px) auto;
+    background-position: center, center 58%, center 58%;
   }
 
   .hero-inner {
@@ -1537,17 +1545,74 @@ h1 {
   }
 
   h1 {
-    font-size: 2.45rem;
+    font-size: 2.15rem;
+  }
+
+  .hero-subtitle {
+    margin-bottom: 14px;
+    font-size: 1.2rem;
   }
 
   .hero-lede {
-    font-size: 1rem;
+    margin-bottom: 20px;
+    font-size: 0.98rem;
+  }
+
+  .hero-meta-row {
+    margin-bottom: 18px;
+  }
+
+  .hero-location {
+    align-items: flex-start;
+    font-size: 0.92rem;
+    line-height: 1.45;
+  }
+
+  .hero-location svg {
+    flex: 0 0 auto;
+    margin-top: 3px;
+  }
+
+  .hero-stack-row {
+    align-items: flex-start;
+    margin-bottom: 24px;
+  }
+
+  .stack-label {
+    width: 100%;
+  }
+
+  .signal-stack {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    width: 100%;
+    gap: 10px;
+  }
+
+  .signal-stack span {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 42px;
   }
 
   .hero-status-strip {
-    align-items: flex-start;
-    padding-top: 18px;
-    margin-top: 28px;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: start;
+    gap: 4px 12px;
+    padding-top: 20px;
+    margin-top: 24px;
+  }
+
+  .hero-status-strip span:last-child {
+    grid-column: 2;
+    font-size: 0.9rem;
+    line-height: 1.45;
+  }
+
+  .status-dot {
+    margin-top: 7px;
   }
 
   .metric-grid,
@@ -1564,6 +1629,8 @@ h1 {
 
   .metric-grid {
     grid-template-columns: 1fr;
+    gap: 16px;
+    padding-top: 20px;
   }
 
   .chart-wrap svg {
@@ -1578,6 +1645,12 @@ h1 {
   .hero-actions {
     flex-direction: column;
     align-items: stretch;
+    gap: 10px;
+  }
+
+  .button {
+    width: 100%;
+    min-height: 52px;
   }
 
   .site-footer {
