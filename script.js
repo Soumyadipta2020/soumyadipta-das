@@ -164,14 +164,7 @@
     revealObserver.observe(el);
   });
 
-  // Experience Details Toggle
-  document.querySelectorAll(".toggle-details").forEach((btn) => {
-    btn.addEventListener("click", () => {
-      const detailsList = btn.previousElementSibling;
-      const isExpanded = detailsList.classList.toggle("is-expanded");
-      btn.textContent = isExpanded ? "Show Less" : "View Details";
-    });
-  });
+
 
   // Back to Top button logic
   const backToTopBtn = document.getElementById("back-to-top");
