@@ -1,10 +1,10 @@
 :root {
   color-scheme: dark;
-  --bg: #070a0f;
-  --bg-soft: #0c121b;
-  --surface: #121a26;
-  --surface-2: #172233;
-  --surface-3: #1d2a3a;
+  --bg: #0a192f;
+  --bg-soft: #112240;
+  --surface: #172a45;
+  --surface-2: #1e3352;
+  --surface-3: #233b5c;
   --text: #f7fbff;
   --muted: #a3b1c2;
   --subtle: #6f7f93;
@@ -130,7 +130,7 @@ svg {
 }
 
 .brand-copy span {
-  color: var(--orange);
+  color: var(--blue);
   font-family: "JetBrains Mono", monospace;
   font-size: 0.74rem;
   font-weight: 700;
@@ -164,7 +164,7 @@ svg {
 }
 
 .site-nav a.is-active {
-  box-shadow: inset 0 -3px 0 var(--orange);
+  box-shadow: inset 0 -3px 0 var(--blue);
 }
 
 .header-meta {
@@ -241,7 +241,7 @@ svg {
 .hero-subtitle {
   font-size: 1.5rem;
   font-weight: 700;
-  color: var(--orange);
+  color: var(--blue);
   margin-top: -4px;
   margin-bottom: 18px;
   line-height: 1.25;
@@ -266,7 +266,7 @@ svg {
 .hero-location svg {
   width: 16px;
   height: 16px;
-  color: var(--orange);
+  color: var(--blue);
 }
 
 .hero-meta-row .signal-actions {
@@ -309,9 +309,9 @@ svg {
 
 .signal-actions a:hover,
 .signal-actions a:focus-visible {
-  color: var(--orange);
+  color: var(--blue);
   outline: 0;
-  border-color: var(--orange);
+  border-color: var(--blue);
 }
 
 .signal-actions svg {
@@ -358,7 +358,7 @@ svg {
   width: 10px;
   height: 10px;
   border-radius: 999px;
-  background: var(--orange);
+  background: var(--blue);
   box-shadow: 0 0 0 6px rgba(255, 122, 26, 0.16);
 }
 
@@ -412,8 +412,8 @@ h1 {
 }
 
 .button-primary {
-  background: var(--orange);
-  border-color: var(--orange);
+  background: var(--blue);
+  border-color: var(--blue);
   color: #111111;
 }
 
@@ -453,7 +453,7 @@ h1 {
   width: 10px;
   height: 10px;
   border-radius: 999px;
-  background: var(--orange);
+  background: var(--blue);
 }
 
 .metric-grid,
@@ -549,7 +549,7 @@ h1 {
 
 .tab-panel {
   padding: 34px 0 28px;
-  border-top: 1px solid var(--orange);
+  border-top: 1px solid var(--blue);
 }
 
 .section-head {
@@ -685,7 +685,7 @@ h1 {
 }
 
 .main-line {
-  stroke: var(--orange);
+  stroke: var(--blue);
   stroke-width: 5;
 }
 
@@ -715,7 +715,7 @@ h1 {
 }
 
 .chart-point.main {
-  stroke: var(--orange);
+  stroke: var(--blue);
 }
 
 .chart-point.alt {
@@ -740,7 +740,7 @@ h1 {
   color: var(--text);
   background: rgba(10, 15, 24, 0.96);
   border: 1px solid var(--line-strong);
-  border-top: 3px solid var(--orange);
+  border-top: 3px solid var(--blue);
   border-radius: 8px;
   box-shadow: var(--shadow);
   pointer-events: none;
@@ -814,7 +814,7 @@ h1 {
 .timeline-item,
 .project-card,
 .education-card {
-  --card-glow: var(--orange);
+  --card-glow: var(--blue);
   min-width: 0;
   padding: 20px;
   background: var(--surface);
@@ -826,7 +826,7 @@ h1 {
   width: 28px;
   height: 28px;
   margin-bottom: 16px;
-  color: var(--orange);
+  color: var(--blue);
 }
 
 .focus-item h3,
@@ -849,7 +849,7 @@ h1 {
 }
 
 .experience-company {
-  --card-glow: var(--orange);
+  --card-glow: var(--blue);
   display: flex;
   align-items: center;
   gap: 16px;
@@ -857,12 +857,12 @@ h1 {
   padding: 18px 20px;
   background: var(--surface);
   border: 1px solid var(--line);
-  border-left: 3px solid var(--orange);
+  border-left: 3px solid var(--blue);
   border-radius: 8px;
 }
 
 .experience-company strong {
-  color: var(--orange);
+  color: var(--blue);
   font-size: 1.6rem;
 }
 
@@ -876,7 +876,7 @@ h1 {
   display: grid;
   grid-template-columns: 190px 1fr;
   gap: 8px 22px;
-  border-left: 3px solid var(--orange);
+  border-left: 3px solid var(--blue);
 }
 
 .timeline-item > span {
@@ -912,7 +912,7 @@ h1 {
 }
 
 .role-details li::marker {
-  color: var(--orange);
+  color: var(--blue);
 }
 
 .tag-list {
@@ -1095,7 +1095,7 @@ h1 {
 .project-card a:focus-visible,
 .social-links a:hover,
 .social-links a:focus-visible {
-  color: var(--orange);
+  color: var(--blue);
   outline: 0;
 }
 
@@ -1143,8 +1143,8 @@ h1 {
 }
 
 .award-card {
-  --card-glow: var(--orange);
-  border-left: 3px solid var(--orange);
+  --card-glow: var(--blue);
+  border-left: 3px solid var(--blue);
 }
 
 .credential-logo {
@@ -1172,7 +1172,7 @@ h1 {
 }
 
 .exl-logo {
-  color: var(--orange);
+  color: var(--blue);
   background: #fff7f0;
   font-weight: 800;
 }
@@ -1216,7 +1216,7 @@ h1 {
 }
 
 .contact-band {
-  --card-glow: var(--orange);
+  --card-glow: var(--blue);
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
   gap: 24px;
@@ -1226,7 +1226,7 @@ h1 {
   padding: 28px;
   background: var(--surface-2);
   border: 1px solid var(--line);
-  border-top: 3px solid var(--orange);
+  border-top: 3px solid var(--blue);
   border-radius: 8px;
 }
 
@@ -1687,8 +1687,8 @@ h1 {
   width: 48px;
   height: 48px;
   color: #111111;
-  background: var(--orange);
-  border: 1px solid var(--orange);
+  background: var(--blue);
+  border: 1px solid var(--blue);
   border-radius: 50%;
   cursor: pointer;
   opacity: 0;
@@ -1735,8 +1735,8 @@ h1 {
   width: 48px;
   height: 48px;
   color: #111111;
-  background: var(--orange);
-  border: 1px solid var(--orange);
+  background: var(--blue);
+  border: 1px solid var(--blue);
   border-radius: 50%;
   cursor: pointer;
   opacity: 0;
