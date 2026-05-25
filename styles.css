@@ -1455,11 +1455,10 @@ h1 {
     height: auto;
     padding: 48px 20px 44px;
     background-image:
-      linear-gradient(180deg, rgba(5, 8, 13, 0.97) 0%, rgba(5, 8, 13, 0.9) 58%, rgba(5, 8, 13, 0.78) 100%),
-      var(--hero-image),
-      var(--hero-fallback);
-    background-size: cover, min(82vw, 420px) auto, min(68vw, 320px) auto;
-    background-position: center, center bottom, center bottom;
+      linear-gradient(90deg, rgba(5, 8, 13, 0.98) 0%, rgba(5, 8, 13, 0.95) 56%, rgba(5, 8, 13, 0.82) 100%),
+      var(--hero-image);
+    background-size: cover, min(78vw, 430px) auto;
+    background-position: center, right center;
   }
 
   .hero-inner {
@@ -1536,8 +1535,11 @@ h1 {
     min-height: 0;
     height: auto;
     padding: 30px 16px 32px;
-    background-size: cover, min(92vw, 360px) auto, min(72vw, 300px) auto;
-    background-position: center, center 58%, center 58%;
+    background-image:
+      linear-gradient(90deg, rgba(5, 8, 13, 0.99) 0%, rgba(5, 8, 13, 0.96) 58%, rgba(5, 8, 13, 0.86) 100%),
+      var(--hero-image);
+    background-size: cover, min(105vw, 430px) auto;
+    background-position: center, right center;
   }
 
   .hero-inner {
