@@ -24,12 +24,6 @@
     }
   }
 
-  if (window.lucide) {
-        window.lucide.createIcons();
-      }
-    }
-  }
-
   function closeMenu() {
     document.body.classList.remove("nav-open");
     if (navToggle) {
