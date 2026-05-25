@@ -1795,10 +1795,3 @@ h1 {
 .project-card a:hover {
   color: var(--text-primary);
 }
-.demo-link {
-  color: var(--accent-blue) !important;
-  font-weight: 500;
-}
-.demo-link:hover {
-  color: #fff !important;
-}
