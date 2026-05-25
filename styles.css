@@ -797,11 +797,24 @@ h1 {
   border-radius: 999px;
 }
 
+
+@keyframes fillBar {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
 .skill-meter div span {
   display: block;
   height: 100%;
   background: linear-gradient(90deg, var(--teal), var(--blue));
+  transform-origin: left;
+  transform: scaleX(0);
 }
+
+.reveal-up.is-visible .skill-meter div span {
+  animation: fillBar 1.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
 
 .focus-grid {
   display: grid;
@@ -1708,7 +1721,7 @@ h1 {
 .back-to-top:focus-visible {
   transform: translateY(-3px);
   box-shadow: 0 8px 24px rgba(255, 122, 26, 0.4);
-
+}
 
 /* Scroll Reveal Animations */
 .reveal-up {
@@ -1794,4 +1807,68 @@ h1 {
 }
 .project-card a:hover {
   color: var(--text-primary);
+}
+
+.project-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 32px;
+  justify-content: center;
+}
+
+.filter-btn {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  color: var(--muted);
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.filter-btn:hover {
+  background: var(--surface-2);
+  color: var(--text);
+  border-color: var(--line-strong);
+}
+
+.filter-btn.active {
+  background: rgba(67, 135, 255, 0.15); /* var(--blue) with opacity */
+  color: var(--blue);
+  border-color: var(--blue);
+}
+
+.project-card {
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.project-card.hidden {
+  display: none;
+}
+
+.social-links a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--surface);
+  color: var(--muted);
+  transition: all 0.3s ease;
+}
+
+.social-links a svg, .social-links a i {
+  width: 20px;
+  height: 20px;
+  transition: transform 0.3s ease;
+}
+
+.social-links a:hover {
+  background: rgba(67, 135, 255, 0.15);
+  color: var(--blue);
+  transform: translateY(-3px);
 }

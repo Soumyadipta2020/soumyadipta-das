@@ -169,12 +169,18 @@
   // Back to Top button logic
   const backToTopBtn = document.getElementById("back-to-top");
   if (backToTopBtn) {
+    let lastScrollY = window.scrollY;
+    
     window.addEventListener("scroll", () => {
-      if (window.scrollY > 400) {
+      const currentScrollY = window.scrollY;
+      
+      if (currentScrollY < lastScrollY && currentScrollY > 400) {
         backToTopBtn.classList.add("is-visible");
       } else {
         backToTopBtn.classList.remove("is-visible");
       }
+      
+      lastScrollY = currentScrollY;
     });
 
     backToTopBtn.addEventListener("click", () => {
@@ -189,3 +195,27 @@
     window.lucide.createIcons();
   }
 })();
+
+// Project Filtering Logic
+const filterBtns = document.querySelectorAll('.filter-btn');
+const projectCards = document.querySelectorAll('.project-card');
+
+filterBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    // Remove active class from all buttons
+    filterBtns.forEach(b => b.classList.remove('active'));
+    // Add active class to clicked button
+    btn.classList.add('active');
+    
+    const filterValue = btn.getAttribute('data-filter');
+    
+    projectCards.forEach(card => {
+      const categories = card.getAttribute('data-category') || '';
+      if (filterValue === 'all' || categories.includes(filterValue)) {
+        card.classList.remove('hidden');
+      } else {
+        card.classList.add('hidden');
+      }
+    });
+  });
+});
