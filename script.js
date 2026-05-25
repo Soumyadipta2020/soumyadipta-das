@@ -18,44 +18,10 @@
     const icon = navToggle.querySelector("svg");
     if (icon) {
       icon.outerHTML = `<i data-lucide="${isOpen ? "x" : "menu"}"></i>`;
-    
-  // Scroll reveal observer
-  const observerOptions = {
-    root: null,
-    rootMargin: "0px",
-    threshold: 0.1
-  };
-
-  const revealObserver = new IntersectionObserver((entries, observer) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("is-visible");
-        observer.unobserve(entry.target);
+      if (window.lucide) {
+        window.lucide.createIcons();
       }
-    });
-  }, observerOptions);
-
-  document.querySelectorAll(".reveal-up").forEach(el => {
-    revealObserver.observe(el);
-  });
-
-  // Back to Top button logic
-  const backToTopBtn = document.getElementById("back-to-top");
-  if (backToTopBtn) {
-    window.addEventListener("scroll", () => {
-      if (window.scrollY > 400) {
-        backToTopBtn.classList.add("is-visible");
-      } else {
-        backToTopBtn.classList.remove("is-visible");
-      }
-    });
-
-    backToTopBtn.addEventListener("click", () => {
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-      });
-    });
+    }
   }
 
   if (window.lucide) {
@@ -73,6 +39,10 @@
   }
 
   function activateTab(tabName) {
+    if (window.location.hash !== `#${tabName}`) {
+      window.history.replaceState(null, "", `#${tabName}`);
+    }
+
     tabButtons.forEach((button) => {
       const isActive = button.dataset.tab === tabName;
       button.classList.toggle("is-active", isActive);
@@ -161,6 +131,24 @@
     }
   });
 
+  const siteNav = document.querySelector(".site-nav");
+  if (siteNav) {
+    siteNav.addEventListener("keydown", (e) => {
+      if (e.key === "ArrowRight" || e.key === "ArrowLeft") {
+        e.preventDefault();
+        const activeIdx = tabButtons.findIndex(b => b.classList.contains("is-active"));
+        let nextIdx = e.key === "ArrowRight" ? activeIdx + 1 : activeIdx - 1;
+        if (nextIdx >= tabButtons.length) nextIdx = 0;
+        if (nextIdx < 0) nextIdx = tabButtons.length - 1;
+        
+        const nextTab = tabButtons[nextIdx];
+        activateTab(nextTab.dataset.tab);
+        nextTab.focus();
+        scrollToWorkbench();
+      }
+    });
+  }
+
 
   // Scroll reveal observer
   const observerOptions = {
@@ -180,6 +168,15 @@
 
   document.querySelectorAll(".reveal-up").forEach(el => {
     revealObserver.observe(el);
+  });
+
+  // Experience Details Toggle
+  document.querySelectorAll(".toggle-details").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const detailsList = btn.previousElementSibling;
+      const isExpanded = detailsList.classList.toggle("is-expanded");
+      btn.textContent = isExpanded ? "Show Less" : "View Details";
+    });
   });
 
   // Back to Top button logic
