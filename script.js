@@ -10,6 +10,8 @@
   const blogSource = document.getElementById("blog-source");
   const blogBack = document.getElementById("blog-back");
   const blogLinks = Array.from(document.querySelectorAll("[data-blog-id]"));
+  const projectGrid = document.querySelector(".project-grid");
+  const updateTickerTrack = document.getElementById("update-ticker-track");
   const tooltip = document.createElement("div");
 
   tooltip.className = "chart-tooltip";
@@ -275,6 +277,156 @@
     }
   };
 
+  function getBlogTickerItem(listId, label) {
+    const item = document.querySelector(`#${listId} .blog-item`);
+    if (!item) {
+      return null;
+    }
+
+    return {
+      label,
+      title: item.querySelector(".blog-title")?.textContent.trim() || "Latest article",
+      meta: item.querySelector(".blog-date")?.textContent.trim() || "New",
+      href: item.getAttribute("href") || "#writing",
+      external: item.target === "_blank"
+    };
+  }
+
+  function getProjectTickerItem() {
+    const card = document.querySelector("#projects-panel .project-card");
+    if (!card) {
+      return null;
+    }
+
+    const link = card.querySelector(".project-links a");
+    return {
+      label: "Project",
+      title: card.querySelector("h3")?.textContent.trim() || "Featured project",
+      meta: card.dataset.latestCommitLabel || card.querySelector("p")?.textContent.trim() || "Featured",
+      href: link?.getAttribute("href") || "#projects",
+      external: Boolean(link)
+    };
+  }
+
+  function getGitHubRepoFromCard(card) {
+    const repoLink = card.querySelector('.project-links a[href*="github.com/"]');
+    if (!repoLink) {
+      return null;
+    }
+
+    try {
+      const url = new URL(repoLink.href);
+      const [, owner, repo] = url.pathname.split("/");
+      if (!owner || !repo) {
+        return null;
+      }
+
+      return `${owner}/${repo.replace(/\.git$/, "")}`;
+    } catch (error) {
+      return null;
+    }
+  }
+
+  function formatCommitDate(date) {
+    return new Intl.DateTimeFormat("en", {
+      month: "short",
+      day: "numeric",
+      year: "numeric"
+    }).format(date);
+  }
+
+  async function fetchLatestCommitDate(repo) {
+    const response = await fetch(`https://api.github.com/repos/${repo}/commits?per_page=1`, {
+      headers: {
+        Accept: "application/vnd.github+json"
+      }
+    });
+
+    if (!response.ok) {
+      throw new Error(`GitHub request failed for ${repo}`);
+    }
+
+    const commits = await response.json();
+    const dateValue = commits[0]?.commit?.committer?.date || commits[0]?.commit?.author?.date;
+    if (!dateValue) {
+      throw new Error(`No commit date returned for ${repo}`);
+    }
+
+    return new Date(dateValue);
+  }
+
+  async function sortProjectsByLatestCommit() {
+    if (!projectGrid) {
+      return;
+    }
+
+    const cards = Array.from(projectGrid.querySelectorAll(".project-card"));
+    const projectUpdates = await Promise.all(cards.map(async (card, index) => {
+      const repo = getGitHubRepoFromCard(card);
+      if (!repo) {
+        return { card, index, timestamp: 0 };
+      }
+
+      try {
+        const commitDate = await fetchLatestCommitDate(repo);
+        card.dataset.latestCommit = commitDate.toISOString();
+        card.dataset.latestCommitLabel = `Updated ${formatCommitDate(commitDate)}`;
+        return { card, index, timestamp: commitDate.getTime() };
+      } catch (error) {
+        console.warn(error);
+        return { card, index, timestamp: 0 };
+      }
+    }));
+
+    projectUpdates
+      .sort((a, b) => b.timestamp - a.timestamp || a.index - b.index)
+      .forEach(({ card }) => projectGrid.appendChild(card));
+  }
+
+  function createTickerLink(item) {
+    const link = document.createElement("a");
+    link.className = "update-ticker-item";
+    link.href = item.href;
+
+    if (item.external) {
+      link.target = "_blank";
+      link.rel = "noopener";
+    }
+
+    const label = document.createElement("span");
+    label.textContent = item.label;
+
+    const title = document.createElement("strong");
+    title.textContent = item.title;
+
+    const meta = document.createElement("em");
+    meta.textContent = item.meta;
+
+    link.append(label, title, meta);
+    return link;
+  }
+
+  function initUpdateTicker() {
+    if (!updateTickerTrack) {
+      return;
+    }
+
+    const items = [
+      getBlogTickerItem("list-ds", "Data Science Blog"),
+      getBlogTickerItem("list-travel", "Travel Blog"),
+      getProjectTickerItem()
+    ].filter(Boolean);
+
+    if (!items.length) {
+      return;
+    }
+
+    updateTickerTrack.replaceChildren(
+      ...items.map(createTickerLink),
+      ...items.map(createTickerLink)
+    );
+  }
+
   function setMenuIcon(isOpen) {
     if (!navToggle) {
       return;
@@ -491,6 +643,8 @@
     point.addEventListener("blur", hideTooltip);
   });
 
+  initUpdateTicker();
+  sortProjectsByLatestCommit().finally(initUpdateTicker);
   handleHashRoute(false);
 
   window.addEventListener("popstate", () => {

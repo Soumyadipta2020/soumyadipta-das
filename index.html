@@ -31,7 +31,7 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="styles.css?v=2" />
+    <link rel="stylesheet" href="styles.css?v=3" />
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -99,6 +99,32 @@
         <span>Analytics & AI Manager</span>
       </div>
     </header>
+
+    <section class="update-ticker" aria-label="Latest portfolio updates">
+      <div class="update-ticker-label">
+        <i data-lucide="radio"></i>
+        <span>Latest</span>
+      </div>
+      <div class="update-ticker-window">
+        <div class="update-ticker-track" id="update-ticker-track">
+          <a class="update-ticker-item" href="#writing">
+            <span>Data Science Blog</span>
+            <strong>Unsupervised Learning: A Statistical Approach to Discovering Hidden Patterns</strong>
+            <em>Oct 2025</em>
+          </a>
+          <a class="update-ticker-item" href="#writing">
+            <span>Travel Blog</span>
+            <strong>Discovering the Mystical Beauty of Gomukh and Tapovan</strong>
+            <em>Feb 2025</em>
+          </a>
+          <a class="update-ticker-item" href="#projects">
+            <span>Project</span>
+            <strong>Forecasting Tool</strong>
+            <em>Python + PyShiny</em>
+          </a>
+        </div>
+      </div>
+    </section>
 
     <main>
       <section
@@ -574,11 +600,26 @@
           <div class="section-head">
             <p>GitHub highlights - Shiny - PySpark - AI apps</p>
             <h2>Featured Projects</h2>
-            <span>Selected work from GitHub, with the strongest forecasting, AI, dashboard, and data-app projects up front.</span>
+            <span>Selected work from GitHub, automatically ordered by latest commit date when the page loads.</span>
           </div>
 
 
           <div class="project-grid">
+            <article class="project-card reveal-up">
+              <div class="project-icon blue"><i data-lucide="plane"></i></div>
+              <p>Python + Shiny</p>
+              <h3 data-category="python shiny optimization airport">Airport Resource Optimization</h3>
+              <span class="impact-badge">Resource Optimization</span>
+              <span>Airport resource optimization Shiny app focused on operational planning and allocation workflows.</span>
+              <div class="project-meta">
+                <span>Python</span>
+                <span>Shiny</span>
+                <span>Optimization</span>
+              </div>
+              <div class="project-links">
+                <a href="https://github.com/Soumyadipta2020/Airport-Resource-Optimization" target="_blank" rel="noopener">Open repo <i data-lucide="external-link"></i></a>
+              </div>
+            </article>
             <article class="project-card reveal-up">
               <div class="project-icon blue"><i data-lucide="sparkles"></i></div>
               <p>Python + PyShiny</p>
@@ -592,6 +633,21 @@
               </div>
               <div class="project-links">
                 <a href="https://github.com/Soumyadipta2020/forecasting_tool_pyshiny" target="_blank" rel="noopener">Open repo <i data-lucide="external-link"></i></a>
+              </div>
+            </article>
+            <article class="project-card reveal-up">
+              <div class="project-icon violet"><i data-lucide="sliders"></i></div>
+              <p>Python + Streamlit</p>
+              <h3 data-category="python streamlit airport">Airport Resource Management</h3>
+              <span class="impact-badge">Dashboard for Planners</span>
+              <span>Interactive dashboard and resource planning application designed for airport operational planners.</span>
+              <div class="project-meta">
+                <span>Python</span>
+                <span>Streamlit</span>
+                <span>Planning</span>
+              </div>
+              <div class="project-links">
+                <a href="https://github.com/Soumyadipta2020/Airport-Resource-Management" target="_blank" rel="noopener">Open repo <i data-lucide="external-link"></i></a>
               </div>
             </article>
             <article class="project-card reveal-up">
@@ -610,21 +666,6 @@
               </div>
             </article>
             <article class="project-card reveal-up">
-              <div class="project-icon gold"><i data-lucide="bot"></i></div>
-              <p>R + AI</p>
-              <h3 data-category="r shiny nlp ai">Multimodal AI Chatbot</h3>
-              <span class="impact-badge">AI Assistant</span>
-              <span>R-based chatbot project exploring multimodal AI workflows with Shiny, JavaScript, and Hugging Face integration.</span>
-              <div class="project-meta">
-                <span>R</span>
-                <span>Shiny</span>
-                <span>NLP</span>
-              </div>
-              <div class="project-links">
-                <a href="https://github.com/Soumyadipta2020/Chatbot_with_R" target="_blank" rel="noopener">Open repo <i data-lucide="external-link"></i></a>
-              </div>
-            </article>
-            <article class="project-card reveal-up">
               <div class="project-icon red"><i data-lucide="brain"></i></div>
               <p>Python + LangChain</p>
               <h3 data-category="python ai">AI Agent Beer Production</h3>
@@ -640,33 +681,18 @@
               </div>
             </article>
             <article class="project-card reveal-up">
-              <div class="project-icon violet"><i data-lucide="sliders"></i></div>
-              <p>Python + Streamlit</p>
-              <h3 data-category="python streamlit">Airport Resource Management</h3>
-              <span class="impact-badge">Dashboard for Planners</span>
-              <span>Interactive dashboard and resource planning application designed for airport operational planners.</span>
+              <div class="project-icon gold"><i data-lucide="bot"></i></div>
+              <p>R + AI</p>
+              <h3 data-category="r shiny nlp ai">Multimodal AI Chatbot</h3>
+              <span class="impact-badge">AI Assistant</span>
+              <span>R-based chatbot project exploring multimodal AI workflows with Shiny, JavaScript, and Hugging Face integration.</span>
               <div class="project-meta">
-                <span>Python</span>
-                <span>Streamlit</span>
-                <span>Planning</span>
+                <span>R</span>
+                <span>Shiny</span>
+                <span>NLP</span>
               </div>
               <div class="project-links">
-                <a href="https://github.com/Soumyadipta2020/Airport-Resource-Management" target="_blank" rel="noopener">Open repo <i data-lucide="external-link"></i></a>
-              </div>
-            </article>
-            <article class="project-card reveal-up">
-              <div class="project-icon cyan"><i data-lucide="bar-chart-3"></i></div>
-              <p>Streamlit + Dashboard</p>
-              <h3 data-category="python streamlit analytics">India Financial Growth</h3>
-              <span class="impact-badge">Financial Analytics</span>
-              <span>Interactive dashboard tracking India's financial growth indicators, built with Python, pandas, and Streamlit.</span>
-              <div class="project-meta">
-                <span>Python</span>
-                <span>Streamlit</span>
-                <span>Analytics</span>
-              </div>
-              <div class="project-links">
-                <a href="https://github.com/Soumyadipta2020/financial_growth_app" target="_blank" rel="noopener">Open repo <i data-lucide="external-link"></i></a>
+                <a href="https://github.com/Soumyadipta2020/Chatbot_with_R" target="_blank" rel="noopener">Open repo <i data-lucide="external-link"></i></a>
               </div>
             </article>
           </div>
@@ -1397,6 +1423,6 @@
       <i data-lucide="arrow-up"></i>
     </button>
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
-    <script src="script.js?v=2"></script>
+    <script src="script.js?v=4"></script>
   </body>
 </html>

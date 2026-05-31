@@ -199,6 +199,123 @@ svg {
   border-radius: 8px;
 }
 
+.update-ticker {
+  position: sticky;
+  top: 66px;
+  z-index: 25;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  min-height: 46px;
+  overflow: hidden;
+  background: rgba(7, 11, 18, 0.94);
+  border-bottom: 1px solid var(--line);
+  box-shadow: 0 16px 34px rgba(0, 0, 0, 0.22);
+  backdrop-filter: blur(16px);
+}
+
+.update-ticker-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 100%;
+  padding: 0 20px 0 22px;
+  color: #ffffff;
+  background: linear-gradient(90deg, rgba(67, 135, 255, 0.26), rgba(30, 200, 165, 0.1));
+  border-right: 1px solid var(--line);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.update-ticker-label svg {
+  width: 17px;
+  height: 17px;
+  color: var(--orange);
+}
+
+.update-ticker-window {
+  min-width: 0;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 28px, #000 calc(100% - 56px), transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 28px, #000 calc(100% - 56px), transparent);
+}
+
+.update-ticker-track {
+  display: flex;
+  width: max-content;
+  align-items: center;
+  padding: 7px 14px;
+  animation: ticker-scroll 32s linear infinite;
+  will-change: transform;
+}
+
+.update-ticker:hover .update-ticker-track,
+.update-ticker:focus-within .update-ticker-track {
+  animation-play-state: paused;
+}
+
+.update-ticker-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  min-height: 32px;
+  margin-right: 14px;
+  padding: 5px 12px;
+  color: #eef6ff;
+  text-decoration: none;
+  background: rgba(255, 255, 255, 0.055);
+  border: 1px solid rgba(255, 255, 255, 0.11);
+  border-radius: 8px;
+  white-space: nowrap;
+  transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease;
+}
+
+.update-ticker-item:hover,
+.update-ticker-item:focus-visible {
+  background: rgba(67, 135, 255, 0.15);
+  border-color: rgba(67, 135, 255, 0.58);
+  outline: 0;
+  transform: translateY(-1px);
+}
+
+.update-ticker-item span {
+  color: var(--teal);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.7rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.update-ticker-item strong {
+  max-width: 440px;
+  overflow: hidden;
+  color: #ffffff;
+  font-size: 0.9rem;
+  font-weight: 800;
+  text-overflow: ellipsis;
+}
+
+.update-ticker-item em {
+  color: var(--gold);
+  font-size: 0.78rem;
+  font-style: normal;
+  font-weight: 800;
+}
+
+@keyframes ticker-scroll {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
 .hero {
   position: relative;
   display: flex;
@@ -1553,6 +1670,23 @@ h1 {
     border-radius: 8px;
   }
 
+  .update-ticker {
+    grid-template-columns: 1fr;
+    top: 66px;
+  }
+
+  .update-ticker-label {
+    justify-content: center;
+    min-height: 34px;
+    padding: 0 16px;
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .update-ticker-track {
+    animation-duration: 26s;
+  }
+
   .hero {
     align-items: flex-start;
     min-height: 0;
@@ -1633,6 +1767,21 @@ h1 {
 
   .site-nav {
     inset: 66px 12px auto;
+  }
+
+  .update-ticker-item {
+    gap: 7px;
+    max-width: 86vw;
+  }
+
+  .update-ticker-item strong {
+    max-width: 46vw;
+    font-size: 0.82rem;
+  }
+
+  .update-ticker-item span,
+  .update-ticker-item em {
+    font-size: 0.68rem;
   }
 
   .hero {
@@ -2026,4 +2175,12 @@ h1 {
 }
 .writing-column a.blog-item.hidden {
   display: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .update-ticker-track {
+    width: auto;
+    overflow-x: auto;
+    animation: none;
+  }
 }
