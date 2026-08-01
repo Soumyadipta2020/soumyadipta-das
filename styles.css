@@ -1100,6 +1100,10 @@ h1 {
   --accent: var(--cyan);
 }
 
+.project-card[data-accent="amber"] {
+  --accent: #f59e0b;
+}
+
 .project-icon {
   display: grid;
   place-items: center;
@@ -1122,6 +1126,11 @@ h1 {
 .project-icon.gold {
   color: var(--gold);
   background: rgba(242, 173, 36, 0.14);
+}
+
+.project-icon.amber {
+  color: #f59e0b;
+  background: rgba(245, 158, 11, 0.14);
 }
 
 .project-icon.red {
