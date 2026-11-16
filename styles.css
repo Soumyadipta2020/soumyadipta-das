@@ -2189,3 +2189,206 @@ h1 {
     animation: none;
   }
 }
+
+/* ==========================================================================
+   Certifications Tab & Grid
+   ========================================================================== */
+.cert-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.cert-filters .tag-chip {
+  cursor: pointer;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  color: var(--muted);
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.cert-filters .tag-chip:hover {
+  color: var(--text);
+  border-color: var(--cyan);
+}
+
+.cert-filters .tag-chip.active {
+  background: var(--cyan);
+  color: #070a0f;
+  border-color: var(--cyan);
+  font-weight: 700;
+}
+
+.certifications-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+@media (max-width: 1024px) {
+  .certifications-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 680px) {
+  .certifications-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.cert-card {
+  --card-glow: var(--cyan);
+  display: flex;
+  flex-direction: column;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--accent, var(--cyan));
+  border-radius: 8px;
+  padding: 20px;
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  transition:
+    transform 220ms ease,
+    border-color 220ms ease,
+    box-shadow 220ms ease;
+}
+
+.cert-card[data-accent="teal"] {
+  --accent: var(--teal);
+  --card-glow: var(--teal);
+}
+
+.cert-card[data-accent="gold"] {
+  --accent: var(--gold);
+  --card-glow: var(--gold);
+}
+
+.cert-card[data-accent="red"] {
+  --accent: var(--red);
+  --card-glow: var(--red);
+}
+
+.cert-card[data-accent="violet"] {
+  --accent: var(--violet);
+  --card-glow: var(--violet);
+}
+
+.cert-card[data-accent="cyan"] {
+  --accent: var(--cyan);
+  --card-glow: var(--cyan);
+}
+
+.cert-card[data-accent="blue"] {
+  --accent: var(--blue);
+  --card-glow: var(--blue);
+}
+
+.cert-card[data-accent="orange"] {
+  --accent: var(--orange);
+  --card-glow: var(--orange);
+}
+
+.cert-card:hover {
+  transform: translateY(-3px);
+  border-color: color-mix(in srgb, var(--card-glow, var(--cyan)) 72%, var(--line));
+}
+
+.cert-card::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  z-index: 0;
+  opacity: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 22% 10%, color-mix(in srgb, var(--card-glow, var(--cyan)) 34%, transparent), transparent 34%),
+    radial-gradient(circle at 82% 0%, color-mix(in srgb, var(--card-glow, var(--cyan)) 24%, transparent), transparent 28%);
+  transition: opacity 220ms ease;
+}
+
+.cert-card:hover::after,
+.cert-card:focus-within::after {
+  opacity: 1;
+}
+
+.cert-card-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 12px;
+  position: relative;
+  z-index: 1;
+}
+
+.cert-card-header .credential-logo {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--line);
+}
+
+.cert-card-header .credential-logo img {
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+}
+
+.cert-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.cert-issuer {
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 0.92rem;
+  line-height: 1.2;
+}
+
+.cert-date {
+  color: var(--cyan);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.78rem;
+  font-weight: 800;
+}
+
+.cert-card h3 {
+  font-size: 1.04rem;
+  color: #ffffff;
+  margin: 0 0 8px 0;
+  line-height: 1.35;
+  position: relative;
+  z-index: 1;
+}
+
+.cert-card p {
+  color: var(--muted);
+  font-size: 0.86rem;
+  line-height: 1.5;
+  margin: 0 0 14px 0;
+  flex-grow: 1;
+  position: relative;
+  z-index: 1;
+}
+
+.cert-card .tag-list {
+  margin-top: auto;
+  position: relative;
+  z-index: 1;
+}
+
+.cert-card.hidden {
+  display: none !important;
+}

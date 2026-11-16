@@ -846,3 +846,43 @@ filterBtns.forEach(btn => {
       });
     });
   });
+
+  // Automatically sort certifications latest first
+  function sortCertificationsLatestFirst() {
+    const certGrid = document.getElementById("certifications-grid");
+    if (!certGrid) return;
+
+    const cards = Array.from(certGrid.querySelectorAll(".cert-card"));
+    cards
+      .map((card, index) => {
+        const dateStr = card.getAttribute("data-date") || "";
+        const timestamp = dateStr ? new Date(dateStr + "-01").getTime() : 0;
+        return { card, index, timestamp };
+      })
+      .sort((a, b) => b.timestamp - a.timestamp || a.index - b.index)
+      .forEach(({ card }) => certGrid.appendChild(card));
+  }
+
+  sortCertificationsLatestFirst();
+
+  // Certification Filtering Logic
+  const certFilterBtns = document.querySelectorAll('[data-cert-filter]');
+  const certCards = document.querySelectorAll('.cert-card');
+
+  certFilterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      certFilterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const filter = btn.getAttribute('data-cert-filter');
+
+      certCards.forEach(card => {
+        const category = card.getAttribute('data-category') || '';
+        if (filter === 'all' || category.includes(filter)) {
+          card.classList.remove('hidden');
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+    });
+  });
