@@ -726,6 +726,67 @@
   if (window.lucide) {
     window.lucide.createIcons();
   }
+  // Dynamic Experience Duration Calculation
+  function updateExperienceDurations() {
+    const monthMap = {
+      jan: 0, feb: 1, mar: 2, apr: 3, may: 4, jun: 5,
+      jul: 6, aug: 7, sep: 8, oct: 9, nov: 10, dec: 11
+    };
+
+    function parseDate(str) {
+      if (!str) return null;
+      const s = str.trim().toLowerCase();
+      if (s === "present" || s === "current" || s === "now" || s.includes("present")) {
+        const now = new Date();
+        return { year: now.getFullYear(), month: now.getMonth() };
+      }
+      const match = s.match(/([a-zA-Z]+)\.?\s+(\d{4})/);
+      if (!match) return null;
+      const m = match[1].slice(0, 3).toLowerCase();
+      const month = monthMap[m];
+      const year = parseInt(match[2], 10);
+      if (month === undefined || isNaN(year)) return null;
+      return { year: year, month: month };
+    }
+
+    function formatDuration(totalMonths) {
+      if (totalMonths <= 0) return "1 mo";
+      const years = Math.floor(totalMonths / 12);
+      const months = totalMonths % 12;
+      const yrStr = years > 0 ? `${years} yr${years > 1 ? "s" : ""}` : "";
+      const moStr = months > 0 ? `${months} mo${months > 1 ? "s" : ""}` : "";
+      return [yrStr, moStr].filter(Boolean).join(" ");
+    }
+
+    const durationElements = document.querySelectorAll(".experience-duration, [data-start]");
+    durationElements.forEach((el) => {
+      let startStr = el.getAttribute("data-start");
+      let endStr = el.getAttribute("data-end");
+
+      if (!startStr && el.getAttribute("data-period")) {
+        const parts = el.getAttribute("data-period").split(/\s*[-–—]\s*/);
+        if (parts.length === 2) {
+          startStr = parts[0];
+          endStr = parts[1];
+        }
+      }
+
+      if (!startStr) return;
+      if (!endStr) endStr = "Present";
+
+      const start = parseDate(startStr);
+      const end = parseDate(endStr);
+      if (!start || !end) return;
+
+      const totalMonths = (end.year - start.year) * 12 + (end.month - start.month) + 1;
+      const formatted = formatDuration(totalMonths);
+      if (formatted) {
+        el.textContent = formatted;
+      }
+    });
+  }
+
+  updateExperienceDurations();
 })();
 
 // Project Filtering Logic
